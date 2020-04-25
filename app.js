@@ -18,6 +18,11 @@ app.use(bodyParser.json());
 var appRoute = require('./routes/app.routes');
 var userRoute = require('./routes/user.route');
 var loginRoute = require('./routes/login.routes');
+var hospitalRoute = require('./routes/hospital.route');
+var medicianRoute = require('./routes/medician.route');
+var searchRoute = require('./routes/search.route');
+var uploadRoute = require('./routes/upload.route');
+var imageRoute = require ('./routes/images.routes');
 
 // Conexion DB
 
@@ -25,9 +30,18 @@ mongoose.connect('mongodb://localhost:27017/hospitalDB', (err, res)=>{
     if(err)throw err;
     console.log('Mongo DB :\x1b[32m%s\x1b[0m','online')
 } );
+
+
+
+
 // Rutas
 app.use('/user', userRoute);
 app.use('/login', loginRoute);
+app.use('/hospital', hospitalRoute);
+app.use('/medician', medicianRoute);
+app.use('/search', searchRoute);
+app.use('/upload', uploadRoute);
+app.use('/img', imageRoute);
 app.use('/', appRoute);
 
 
